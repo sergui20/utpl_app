@@ -1,0 +1,81 @@
+{
+    "courses": {
+        "categories": [
+            {
+                "id": 1,
+                "title": "MOOC Autoinstruccionales",
+                "description": "Cursos abiertos en línea para estudiantes, profesionales e interesados en formarse de manera autónoma en diferentes temáticas, diseñados con recursos interactivos, incorporando nuevas metodologías de motivación y disponibles permanentemente.",
+                "moocs": [
+                    {
+                        "id": 1,
+                        "src": "./src/images/course1.jpg",
+                        "title": "Economics",
+                        "author": {
+                            "img": "./src/images/profile1.png",
+                            "name": "Ana Alvarado",
+                            "profesion": "Economista"
+                        },
+                        "validacion": "No"
+                    },
+                    {
+                        "id": 2,
+                        "src": "./src/images/course2.jpg",
+                        "title": "Math",
+                        "author": {
+                            "img": "./src/images/profile2.jpg",
+                            "name": "Jenny Rueda"
+                        },
+                        "validacion": "No"
+                    },
+                    {
+                        "id": 3,
+                        "src": "./src/images/course3.jpg",
+                        "title": "Literature",
+                        "author": {
+                            "img": "./src/images/profile3.jpg",
+                            "name": "Eduardo Baquerizo"
+                        },
+                        "validacion": "No"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "MOOC con soporte docente",
+                "description": "Cursos abiertos en línea para estudiantes, profesionales e interesados en formarse o actualizar sus conocimientos en diferentes temáticas, diseñados con recursos interactivos y con el acompañamiento de un docente para el aprendizaje continuo.",
+                "moocs": [
+                    {
+                        "id": 1,
+                        "src": "./src/images/course1.jpg",
+                        "title": "Science",
+                        "author": {
+                            "img": "./src/images/profile1.png",
+                            "name": "Hugo Sanchez"
+                        },
+                        "validacion": "No"
+                    },
+                    {
+                        "id": 2,
+                        "src": "./src/images/course2.jpg",
+                        "title": "Entrepreneurship",
+                        "author": {
+                            "img": "./src/images/profile2.jpg",
+                            "name": "Juan Valverde"
+                        },
+                        "validacion": "No"
+                    },
+                    {
+                        "id": 3,
+                        "src": "./src/images/course3.jpg",
+                        "title": "Computer Science",
+                        "author": {
+                            "img": "./src/images/profile3.jpg",
+                            "name": "Pedro Vargas"
+                        },
+                        "validacion": "No"
+                    }
+                ]
+            }
+        ]
+    }
+}
