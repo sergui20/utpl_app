@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView, View } from 'react-native';
 
-import data from '../../api.json';
+import data from '../../../api.json';
 const categories = data.courses.categories
 
 import Card from './card';
 
 class Main extends Component {
+    static navigationOptions = {
+        title: 'UTPL'
+    }
+
     render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -21,7 +25,7 @@ class Main extends Component {
                                     {
                                         category.moocs.map( mooc => {
                                             return (
-                                                <Card key={mooc.id} {...mooc} source={require('../images/profile1.png')} />
+                                                <Card key={mooc.id} {...mooc} source={require('../../images/profile1.png')} />
                                             )
                                         })
                                     }

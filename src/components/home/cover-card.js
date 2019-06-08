@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from 'react-native';
 function CoverCard () {
     return (
         <View>
-            <Image source={require('../images/course1.jpg')} style={styles.moocCoverPhoto}></Image>
+            <Image source={require('../../images/course1.jpg')} style={styles.moocCoverPhoto}></Image>
         </View>
     )
 }

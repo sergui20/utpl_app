@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, Dimensions } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import YouTube from 'react-native-youtube';
+
+import Button from '../common/button';
 
 const { width } = Dimensions.get("window")
 
 class WatchScreen extends Component {
+    static navigationOptions = {
+        title: 'UTPL'
+    }
+
     render() {
+        const props = this.props.navigation.state.params
         return (
             <View>
                 <View style={{width, height:300}}>
                     <YouTube
-                        apiKey="AIzaSyDBnOU1UElpb8KstypBbGivDOehE7iwHGs" 
+                        apiKey="YOUR_API_KEY" 
                         videoId="KVZ-P-ZI6W4"
                         controls={2}
                         style={{ flex: 1 }}
@@ -19,12 +27,12 @@ class WatchScreen extends Component {
                 <ScrollView style={styles.moocInfo}>
                     <View style={{flex: 1, height: 850}}>
                         <View>
-                            <Text style={styles.moocTitle}>{this.props.mooc.title}</Text>
+                            <Text style={styles.moocTitle}>{props.mooc.title}</Text>
                             <View style={styles.moocVideoInfo}>
                                 <View style={styles.containerAuhtorInfo}>
-                                    <Image source={require('../images/profile1.png')} style={styles.authorPhoto} />
+                                    <Image source={require('../../images/profile1.png')} style={styles.authorPhoto} />
                                     <View style={{marginLeft: 5}}>
-                                        <Text>{this.props.mooc.author.name}</Text>
+                                        <Text>{props.mooc.author.name}</Text>
                                         <Text>Economista</Text>
                                     </View>
                                 </View>
@@ -44,42 +52,38 @@ class WatchScreen extends Component {
                             <Text style={{fontSize: 20, fontWeight: 'bold'}}>Modulos del curso:</Text>
                             <View style={styles.modulesContainer}>
                                 <View style={styles.modulesTypes}>
-                                    <Image style={styles.modulesImage} source={require('../images/m1.png')} />
+                                    <Image style={styles.modulesImage} source={require('../../images/m1.png')} />
                                     <Text style={styles.moduleText}>Presentación del curso</Text>
                                 </View>
 
                                 <View style={styles.modulesTypes}>
-                                    <Image style={styles.modulesImage} source={require('../images/m2.png')} />
+                                    <Image style={styles.modulesImage} source={require('../../images/m2.png')} />
                                     <Text style={styles.moduleText}>El proceso administrativo</Text>
                                 </View>
 
                                 <View style={styles.modulesTypes}>
-                                    <Image style={styles.modulesImage} source={require('../images/m3.png')} />
+                                    <Image style={styles.modulesImage} source={require('../../images/m3.png')} />
                                     <Text style={styles.moduleText}>Fundamentos de la planificación y control de utilidades</Text>
                                 </View>
 
                                 <View style={styles.modulesTypes}>
-                                    <Image style={styles.modulesImage} source={require('../images/m4.png')} />
+                                    <Image style={styles.modulesImage} source={require('../../images/m4.png')} />
                                     <Text style={styles.moduleText}>El proceso de planificación y control de utilidades. Planificación y control de los flujos de efectivo</Text>
                                 </View>
 
                                 <View style={styles.modulesTypes}>
-                                    <Image style={styles.modulesImage} source={require('../images/m5.png')} />
+                                    <Image style={styles.modulesImage} source={require('../../images/m5.png')} />
                                     <Text style={styles.moduleText}>Pronóstico financiero planeación y presupuesto</Text>
                                 </View>
 
                                 <View style={styles.modulesTypes}> 
-                                    <Image style={styles.modulesImage} source={require('../images/m6.png')} />
+                                    <Image style={styles.modulesImage} source={require('../../images/m6.png')} />
                                     <Text style={styles.moduleText}>Evaluación de desempeño y control administrativo</Text>
                                 </View>
                             </View>
                         </View>
 
-                        <View>
-                            <TouchableOpacity style={{backgroundColor: '#f9bf15', paddingVertical: 8, marginVertical: 10}} onPress={() => {}}>
-                                <Text style={{color: '#004073', textAlign: 'center', fontSize: 18, fontWeight: 'bold'}}>Iniciar Sesion</Text>
-                            </TouchableOpacity>
-                        </View>
+                        <Button buttonText="Iniciar Sesión" onPress={() => this.props.navigation.navigate('User')} />
                     </View>
                 </ScrollView>
             </View>
@@ -139,4 +143,4 @@ const styles = {
     }
 };
 
-export default WatchScreen;
+export default withNavigation(WatchScreen);

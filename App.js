@@ -1,38 +1,108 @@
-import React, { Component } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
-import { Router, Stack, Scene } from 'react-native-router-flux';
+import React from 'react';
+import { createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Main from './src/components/main';
-import WatchScreen from './src/components/watch-screen';
+import Main from './src/components/home/main';
+import WatchScreen from './src/components/home/watch-screen';
+import UserScreen from './src/components/user/user-screen';
+import SearchScreen from './src/components/search/search-screen';
 
-const { width } = Dimensions.get("window")
- 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Stack key="root" hideNavBar>
-          <Stack key="main" titleStyle={styles.mainTitle}>
-            <Scene key="allCourses" component={Main} title="UTPL" rightTitle="Iniciar Sesion" rightButtonTextStyle={styles.rightButton} onRight={() => {}} initial />
-            <Scene key="watchCourse" component={WatchScreen} title="UTPL"></Scene>
-          </Stack>
-        </Stack>
-      </Router>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  mainTitle: {
-    color: '#004073',
-    fontSize: 30,
-    fontWeight: '800'
+const HomeStack = createStackNavigator(
+  {
+    Home: Main,
+    Courses: WatchScreen
   },
-  rightButton: {
-    backgroundColor: '#f9bf15',
-    padding: 2.5,
-    color: '#004073'
-  }
-});
+  {
+    initialRouteName: 'Home',
 
-export default App;
+    defaultNavigationOptions: {
+      headerTintColor: '#004073',
+      headerTitleStyle: {
+        fontWeight: '800',
+        fontSize: 30,
+        flex: 1,
+        textAlign: 'center'
+      },
+    }
+  }
+)
+
+const UserStack = createStackNavigator(
+  {
+  User: UserScreen
+  },
+  {
+    defaultNavigationOptions: {
+      headerTintColor: '#004073',
+      headerTitleStyle: {
+        fontWeight: '800',
+        fontSize: 22,
+        flex: 1,
+        textAlign: 'center'
+      },
+    }
+  }
+)
+
+const SearchStack = createStackNavigator(
+  {
+  Search: SearchScreen
+  },
+  {
+    defaultNavigationOptions: {
+      headerTintColor: '#004073',
+      headerTitleStyle: {
+        fontWeight: '800',
+        fontSize: 22,
+        flex: 1,
+        textAlign: 'center'
+      },
+    }
+  }
+)
+
+const AppNavigator = createBottomTabNavigator(
+  {
+    Home: HomeStack,
+    Search: SearchStack,
+    User: UserStack
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ tintColor }) => {
+        const { routeName } = navigation.state;
+        let IconComponent = Ionicons;
+        let iconName;
+        if (routeName === 'Home') {
+          iconName = "ios-home";
+
+        } else if (routeName === 'User') {
+          iconName = "ios-person";
+        } else if (routeName === 'Search') {
+          iconName = "ios-search"
+        }
+
+        return <IconComponent name={iconName} size={25} color={tintColor} />;
+      },
+    }),
+    tabBarOptions: {
+      activeTintColor: '#004073',
+      inactiveTintColor: 'gray',
+    },
+  }
+)
+
+// const styles = StyleSheet.create({
+//   mainTitle: {
+//     color: '#004073',
+//     fontSize: 30,
+//     fontWeight: '800'
+//   },
+//   rightButton: {
+//     backgroundColor: '#f9bf15',
+//     padding: 2.5,
+//     color: '#004073'
+//   }
+// });
+
+export default createAppContainer(AppNavigator);
