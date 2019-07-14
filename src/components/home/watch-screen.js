@@ -18,7 +18,7 @@ class WatchScreen extends Component {
             <View>
                 <View style={{width, height:300}}>
                     <YouTube
-                        apiKey="YOUR_API_KEY" 
+                        apiKey="AIzaSyDBnOU1UElpb8KstypBbGivDOehE7iwHGs" 
                         videoId="KVZ-P-ZI6W4"
                         controls={2}
                         style={{ flex: 1 }}
